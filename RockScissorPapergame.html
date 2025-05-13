@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<header class="text-center" >Rock Paper and Scissors!</header>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Rock Paper and Scissors!</title>  
+<body style="background-color: rgb(211, 213, 214);">
+  <br></br>
+<p class = "text-center">This is a game of Rock paper scissors I have made! </p>
+<p class = "text-center">It is a simple game where you can play against the computer.</p>
+<p class = "text-center">Please start below </p>
+
+
+<div class="d-flex justify-content-center gap-4 text-center mt-4">
+  
+  <div>
+    <img src="ROCK.png" alt="Rock" width="100" height="100">
+    <br>
+    <button class="btn btn-primary mt-2" onclick="playgame('rock')">Rock</button>
+  </div>
+
+  <div>
+    <img src="PAPER.png" alt="Paper" width="100" height="100">
+    <br>
+    <button class="btn btn-primary mt-2" onclick="playgame('paper')">Paper</button>
+  </div>
+
+  <div>
+    <img src="SCISSOR.png" alt="Scissors" width="100" height="100">
+    <br>
+    <button class="btn btn-primary mt-2" onclick="playgame('scissors')">Scissors</button>
+  </div>
+
+</div>
+<div class="text-center mt-4">
+  <div class="d-flex justify-content-center">
+     <img id="resultImage" src="" alt="Result" width="150" style="display: none;">
+     </div>
+  <p id="resultText"></p>
+</div>
+</div>
+</body>
+<script>
+    
+  function playgame (playerMove){
+    const computerMove = pickComputerMove ();
+  
+      let result = '';
+      let imageSrc = '';
+  
+      if (playerMove === 'scissors') {
+          if (computerMove=== 'scissors') {result = 'Oh How boring Booby, looks like a Tie.';
+            imageSrc = 'Tie.jpg';
+          }
+        else if (computerMove === 'rock'){result = 'AWWW Booby! You lose.'; imageSrc = 'loss.jpg';}
+        else if (computerMove === 'paper'){result = 'Genius! You win!'; imageSrc = 'Victory.jpg';}
+      }
+  
+        else if (playerMove ==='paper'){
+            if (computerMove=== 'paper'){
+            result = 'Oh How boring Booby, looks like a Tie.';imageSrc = 'Tie.jpg';
+            }
+            else if (computerMove === 'scissors'){result = 'Oh no Booby! You lose.';imageSrc = 'loss.jpg';}
+            else if (computerMove === 'rock'){result = 'Yay Booby! You win!';imageSrc = 'Victory.jpg';}
+        }
+  
+        else if (playerMove === 'rock'){
+          if (computerMove=== 'rock'){
+            result = 'How boring..its a Tie.';imageSrc = 'Tie.jpg';
+            }
+            else if (computerMove === 'paper'){result = 'Oh no, Bubs! You lose.';imageSrc = 'loss.jpg';}
+            else if (computerMove === 'scissors'){result = 'Lets fugging go boobs! You win!';imageSrc = 'Victory.jpg';}
+  
+      }
+      const resultImage = document.getElementById('resultImage');
+    const resultText = document.getElementById('resultText');
+
+    resultImage.src = imageSrc;
+    resultImage.style.display = 'block'; // Show the image
+    resultText.textContent = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`;
+}
+  
+      alert (`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`);
+  
+  function pickComputerMove () {
+      const randomNumber = Math.random();
+      let computerMove = '';
+  
+      if (randomNumber>=0 && randomNumber <1/3)
+      { computerMove ='rock';} 
+      else if (randomNumber>=1/3 && randomNumber<2/3)
+      { computerMove ='paper';}
+      else if (randomNumber>= 2/3 && randomNumber<1)
+      { computerMove = 'scissors';}
+  
+      console.log(computerMove);
+  
+  
+      return computerMove;
+      }
+      </script> 
+</body>
+</html>
